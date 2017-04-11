@@ -24,5 +24,13 @@ def order_pie():
     return "Your pie is being made!"
 
 
+@app.route('/sns')
+def spike_sns():
+    """ Fire off an SNS notification """
+    import boto3
+    sns_client = boto3.client('sns')
+    sns_client.publish(TopicArn='arn:aws:sns:us-east-1:517753740273:spike-topic', Message='foo')
+
+
 if __name__ == "__main__":
     app.run()
