@@ -1,3 +1,4 @@
+import json
 import logging
 import time
 import uuid
@@ -29,7 +30,8 @@ def spike_sns():
     """ Fire off an SNS notification """
     import boto3
     sns_client = boto3.client('sns')
-    return sns_client.publish(TopicArn='arn:aws:sns:us-east-1:517753740273:spike-topic', Message='foo')
+    resp = sns_client.publish(TopicArn='arn:aws:sns:us-east-1:517753740273:spike-topic', Message='foo')
+    return json.dumps(resp, indent=4, sort_keys=True)
 
 
 if __name__ == "__main__":
