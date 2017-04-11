@@ -29,7 +29,7 @@ def spike_sns():
     """ Fire off an SNS notification """
     import boto3
     sns_client = boto3.client('sns')
-    sns_client.publish(TopicArn='arn:aws:sns:us-east-1:517753740273:spike-topic', Message='foo')
+    return sns_client.publish(TopicArn='arn:aws:sns:us-east-1:517753740273:spike-topic', Message='foo')
 
 
 if __name__ == "__main__":
